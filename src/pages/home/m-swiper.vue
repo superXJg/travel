@@ -38,6 +38,13 @@ export default {
 .home-swiper /deep/ .swiper-pagination-bullet-active{
   background-color: #fff;
 }
+.home-swiper{
+  width: 100%;
+  height: 0;
+  padding-bottom: 31.2%;
+  background-color: #ccc;
+  overflow: hidden;
+}
 .item-img{
   width: 100%;
 }
