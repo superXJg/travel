@@ -17,6 +17,9 @@
 <script>
 export default {
   name: 'm-icons',
+  props: {
+    iconList: Array
+  },
   data () {
     return {
       swiperOption: {
@@ -75,7 +78,7 @@ export default {
   computed: {
     pages () {
       const pages = []
-      this.page.forEach((item, index) => {
+      this.iconList.forEach((item, index) => {
         let page = Math.floor(index / 8)
         if (!pages[page]) {
           pages[page] = []
@@ -87,8 +90,8 @@ export default {
     },
     pages2 () {
       const pages2 = []
-      for (let i = 0; i < this.page.length; i += 8) {
-        pages2.push(this.page.slice(i, i + 8))
+      for (let i = 0; i < this.iconList.length; i += 8) {
+        pages2.push(this.iconList.slice(i, i + 8))
       }
       return pages2
     }
@@ -120,7 +123,7 @@ export default {
         right: 0;
         bottom: 0.44rem;
         .icon-inner-img{
-          height: 100%;
+          height: 95%;
           display: block;
           margin: 0 auto;
           padding: .1rem;

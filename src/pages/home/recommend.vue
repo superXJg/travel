@@ -1,15 +1,15 @@
 <template>
     <div class="recommend">
-      <div class="title border-top border-bottom">推荐</div>
+      <div class="title border-bottom">推荐</div>
       <ul>
-        <li v-for="(item, index) in list" :key="index" class="item border-bottom">
+        <li v-for="(item, index) in recommendList" :key="index" class="item border-bottom">
           <div class="item-img">
             <img :src="item.imgUrl" alt="">
           </div>
           <div class="item-content">
             <div class="item-info">
-              <div class="item-title">鼓浪屿</div>
-              <div class="item-desc">厦门日月谷温泉渡假村</div>
+              <div class="item-title">{{item.title}}</div>
+              <div class="item-desc">{{item.desc}}</div>
             </div>
           </div>
         </li>
@@ -20,6 +20,9 @@
 <script>
 export default {
   name: 'recommend',
+  props: {
+    recommendList: Array
+  },
   data () {
     return {
       list: [

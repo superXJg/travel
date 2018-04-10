@@ -1,7 +1,7 @@
 <template>
   <div class="home-swiper">
-    <swiper :options="swiperOption">
-      <swiper-slide v-for="item in swiperOption.swiperSlides" :key="item.id">
+    <swiper :options="swiperOption" v-if="swiperList.length">
+      <swiper-slide v-for="item in swiperList" :key="item.id">
         <img class="item-img" :src="item.imgUrl" alt="">
       </swiper-slide>
       <div class="swiper-pagination"  slot="pagination"></div>
@@ -13,6 +13,9 @@
 export default {
   /* eslint-disable */
   name: 'm-swiper',
+  props: {
+    swiperList: Array
+  },
   data () {
     return {
         swiperOption: {
