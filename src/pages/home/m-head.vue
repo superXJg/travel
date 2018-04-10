@@ -3,7 +3,9 @@
     <div class="head-left">返回</div>
     <div class="head-input">
     </div>
-    <div class="head-right">北京</div>
+    <div class="head-right">
+      <router-link class="go" to="/city">北京</router-link>
+    </div>
   </div>
 </template>
 
@@ -27,6 +29,9 @@ export default {
   .head-right{
     width: 1.24rem;
     text-align: center;
+    .go{
+      color: #fff;
+    }
   }
   .head-input{
     flex: 1;
