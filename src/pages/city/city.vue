@@ -2,8 +2,8 @@
     <div class='city'>
       <c-head></c-head>
       <c-search></c-search>
-      <c-list :hotCities='hotCities' :cities='cities'></c-list>
-      <alphabet :cities='cities'></alphabet>
+      <c-list :hotCities='hotCities' :cities='cities' :letter='letter'></c-list>
+      <alphabet @change="getLetter" :cities='cities'></alphabet>
     </div>
 </template>
 
@@ -18,7 +18,8 @@ export default {
   data () {
     return {
       hotCities: [],
-      cities: {}
+      cities: {},
+      letter: ''
     }
   },
   components: {
@@ -32,6 +33,11 @@ export default {
       this.hotCities = res.data.data.hotCities
       this.cities = res.data.data.cities
     })
+  },
+  methods: {
+    getLetter (letter) {
+      this.letter = letter
+    }
   }
 }
 </script>
