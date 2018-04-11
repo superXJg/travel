@@ -1,12 +1,56 @@
 <template>
+  <div>
   <div class="head">
-    <input class="ipt" type="text" placeholder="输入城市或者拼音">
+    <input v-model="keyword" class="ipt" type="text" placeholder="输入城市或者拼音">
+  </div>
+  <div class="content" v-show="keyword" ref="scroll">
+    <ul>
+      <li class="content-item border-bottom" v-for="(item, index) in list" :key="index">{{item.name}}</li>
+      <li class="content-item border-bottom" v-show="!list.length">暂无数据</li>
+    </ul>
+  </div>
   </div>
 </template>
 
 <script>
+import BScroll from 'better-scroll'
 export default {
-  name: 'c-search'
+  props: {
+    cities: Object
+  },
+  name: 'c-search',
+  data () {
+    return {
+      keyword: '',
+      list: [],
+      timer: null
+    }
+  },
+  watch: {
+    keyword (value) {
+      if (value.length === 0 || value === '') {
+        this.list = []
+        return
+      }
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
+      this.timer = setTimeout(() => {
+        let result = []
+        for (let key in this.cities) {
+          this.cities[key].forEach((item) => {
+            if (item.spell.indexOf(value) > -1 || item.name.indexOf(value) > -1) {
+              result.push(item)
+            }
+          })
+        }
+        this.list = result
+      }, 100)
+    }
+  },
+  mounted () {
+    this.scroll = new BScroll(this.$refs.scroll)
+  }
 }
 </script>
 
@@ -27,6 +71,21 @@ export default {
       border-radius: 0.1rem;
       background-color: #fff;
       color: #666;
+    }
+  }
+  .content{
+    position: absolute;
+    overflow: hidden;
+    top: 1.62rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #eee;
+    z-index: 1;
+    .content-item{
+      line-height: 0.62rem;
+      padding-left: 0.5rem;
+      background-color: #fff;
     }
   }
 </style>

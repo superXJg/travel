@@ -1,7 +1,7 @@
 <template>
     <div class='city'>
       <c-head></c-head>
-      <c-search></c-search>
+      <c-search :cities='cities'></c-search>
       <c-list :hotCities='hotCities' :cities='cities' :letter='letter'></c-list>
       <alphabet @change="getLetter" :cities='cities'></alphabet>
     </div>
