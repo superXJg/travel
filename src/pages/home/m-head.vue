@@ -4,7 +4,7 @@
     <div class="head-input">
     </div>
     <div class="head-right">
-      <router-link class="go" to="/city">北京</router-link>
+      <router-link class="go" to="/city">{{this.$store.state.city}}</router-link>
     </div>
   </div>
 </template>

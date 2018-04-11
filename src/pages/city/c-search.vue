@@ -5,7 +5,7 @@
   </div>
   <div class="content" v-show="keyword" ref="scroll">
     <ul>
-      <li class="content-item border-bottom" v-for="(item, index) in list" :key="index">{{item.name}}</li>
+      <li @click="handleCity(item.name)" class="content-item border-bottom" v-for="(item, index) in list" :key="index">{{item.name}}</li>
       <li class="content-item border-bottom" v-show="!list.length">暂无数据</li>
     </ul>
   </div>
@@ -50,6 +50,13 @@ export default {
   },
   mounted () {
     this.scroll = new BScroll(this.$refs.scroll)
+  },
+  methods: {
+    handleCity (value) {
+      // this.$store.dispatch('changeCity', value)
+      this.$store.commit('handleCity', value)
+      this.$router.push('/')
+    }
   }
 }
 </script>
