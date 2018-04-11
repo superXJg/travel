@@ -1,21 +1,20 @@
 <template>
 <ul class="list">
-  <li class="item">A</li>
-  <li>A</li>
-  <li>A</li>
-  <li>A</li>
-  <li>A</li>
-  <li>A</li>
+  <li v-for="(item, key) of cities" class="item" :key="key">{{key}}</li>
 </ul>
 </template>
 
 <script>
 export default {
-  name: 'alphabet'
+  name: 'alphabet',
+  props: {
+    cities: Object
+  }
 }
 </script>
 
 <style scoped lang='less'>
+@import "../../assets/css/varibles";
 .list{
   display: flex;
   flex-direction: column;
@@ -28,6 +27,7 @@ export default {
   bottom: 0;
   .item{
     line-height: .44rem;
+    color: @bgColor;
   }
 }
 </style>

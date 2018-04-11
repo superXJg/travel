@@ -12,43 +12,16 @@
         <div class="area">
           <div class="title border-topbottom">热门城市</div>
           <div class="button-list">
-            <div class="button-wrapper">
-              <div class="button">北京</div>
-            </div>
-            <div class="button-wrapper">
-              <div class="button">北京</div>
-            </div>
-            <div class="button-wrapper">
-              <div class="button">北京</div>
+            <div class="button-wrapper" v-for="item of hotCities" :key='item.id'>
+              <div class="button">{{item.name}}</div>
             </div>
           </div>
         </div>
         <div class="area">
-          <div class="area-option">
-            <div class="title border-topbottom">A</div>
+          <div class="area-option" v-for="(item, key) of cities" :key='item.id'>
+            <div class="title border-topbottom">{{key}}</div>
             <ul>
-              <li class="area-item border-bottom">阿尔法</li>
-              <li class="area-item border-bottom">阿尔法</li>
-              <li class="area-item border-bottom">阿尔法</li>
-              <li class="area-item border-bottom">阿尔法</li>
-            </ul>
-          </div>
-          <div class="area-option">
-            <div class="title border-topbottom">A</div>
-            <ul>
-              <li class="area-item border-bottom">阿尔法</li>
-              <li class="area-item border-bottom">阿尔法</li>
-              <li class="area-item border-bottom">阿尔法</li>
-              <li class="area-item border-bottom">阿尔法</li>
-            </ul>
-          </div>
-          <div class="area-option">
-            <div class="title border-topbottom">A</div>
-            <ul>
-              <li class="area-item border-bottom">阿尔法</li>
-              <li class="area-item border-bottom">阿尔法</li>
-              <li class="area-item border-bottom">阿尔法</li>
-              <li class="area-item border-bottom">阿尔法</li>
+              <li v-for="(inneritem, index) of item" class="area-item border-bottom" :key='index'>{{inneritem.name}}</li>
             </ul>
           </div>
         </div>
@@ -60,9 +33,14 @@
 import BScroll from 'better-scroll'
 export default {
   name: 'c-list',
+  props: {
+    cities: Object,
+    hotCities: Array
+  },
   mounted () {
     this.scroll = new BScroll(this.$refs.scroll, {
     })
+    console.log(this.hotCities)
   },
   components: {
   }
