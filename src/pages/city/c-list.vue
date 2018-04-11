@@ -1,62 +1,71 @@
 <template>
-    <div class="list">
-      <div class="area">
-        <div class="title border-topbottom">当前城市</div>
-        <div class="button-list">
-          <div class="button-wrapper">
-            <div class="button">北京</div>
+    <div class="list" ref="scroll">
+      <div>
+        <div class="area">
+          <div class="title border-topbottom">当前城市</div>
+          <div class="button-list">
+            <div class="button-wrapper">
+              <div class="button">北京</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">热门城市</div>
-        <div class="button-list">
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
+        <div class="area">
+          <div class="title border-topbottom">热门城市</div>
+          <div class="button-list">
+            <div class="button-wrapper">
+              <div class="button">北京</div>
+            </div>
+            <div class="button-wrapper">
+              <div class="button">北京</div>
+            </div>
+            <div class="button-wrapper">
+              <div class="button">北京</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="area">
-        <div class="area-option">
-          <div class="title border-topbottom">A</div>
-          <ul>
-            <li class="area-item border-bottom">阿尔法</li>
-            <li class="area-item border-bottom">阿尔法</li>
-            <li class="area-item border-bottom">阿尔法</li>
-            <li class="area-item border-bottom">阿尔法</li>
-          </ul>
-        </div>
-        <div class="area-option">
-          <div class="title border-topbottom">A</div>
-          <ul>
-            <li class="area-item border-bottom">阿尔法</li>
-            <li class="area-item border-bottom">阿尔法</li>
-            <li class="area-item border-bottom">阿尔法</li>
-            <li class="area-item border-bottom">阿尔法</li>
-          </ul>
-        </div>
-        <div class="area-option">
-          <div class="title border-topbottom">A</div>
-          <ul>
-            <li class="area-item border-bottom">阿尔法</li>
-            <li class="area-item border-bottom">阿尔法</li>
-            <li class="area-item border-bottom">阿尔法</li>
-            <li class="area-item border-bottom">阿尔法</li>
-          </ul>
+        <div class="area">
+          <div class="area-option">
+            <div class="title border-topbottom">A</div>
+            <ul>
+              <li class="area-item border-bottom">阿尔法</li>
+              <li class="area-item border-bottom">阿尔法</li>
+              <li class="area-item border-bottom">阿尔法</li>
+              <li class="area-item border-bottom">阿尔法</li>
+            </ul>
+          </div>
+          <div class="area-option">
+            <div class="title border-topbottom">A</div>
+            <ul>
+              <li class="area-item border-bottom">阿尔法</li>
+              <li class="area-item border-bottom">阿尔法</li>
+              <li class="area-item border-bottom">阿尔法</li>
+              <li class="area-item border-bottom">阿尔法</li>
+            </ul>
+          </div>
+          <div class="area-option">
+            <div class="title border-topbottom">A</div>
+            <ul>
+              <li class="area-item border-bottom">阿尔法</li>
+              <li class="area-item border-bottom">阿尔法</li>
+              <li class="area-item border-bottom">阿尔法</li>
+              <li class="area-item border-bottom">阿尔法</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 </template>
 
 <script>
+import BScroll from 'better-scroll'
 export default {
-  name: 'c-list'
+  name: 'c-list',
+  mounted () {
+    this.scroll = new BScroll(this.$refs.scroll, {
+    })
+  },
+  components: {
+  }
 }
 </script>
 

@@ -3,6 +3,7 @@
       <c-head></c-head>
       <c-search></c-search>
       <c-list></c-list>
+      <alphabet></alphabet>
     </div>
 </template>
 
@@ -10,12 +11,14 @@
 import cHead from '@/pages/city/c-head'
 import cSearch from '@/pages/city/c-search'
 import cList from '@/pages/city/c-list'
+import alphabet from '@/pages/city/alphabet'
 export default {
   name: 'city',
   components: {
     cHead,
     cSearch,
-    cList
+    cList,
+    alphabet
   }
 }
 </script>
