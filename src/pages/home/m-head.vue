@@ -27,10 +27,11 @@ export default {
     width: .64rem;
   }
   .head-right{
-    width: 1.24rem;
+    min-width: 1.24rem;
     text-align: center;
     .go{
       color: #fff;
+      padding:0 0.1rem;
     }
   }
   .head-input{

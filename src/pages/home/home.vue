@@ -15,11 +15,11 @@ import mIcons from '@/pages/home/m-icons'
 import recommend from '@/pages/home/recommend'
 import weekend from '@/pages/home/weekend'
 import axios from 'axios'
+import { mapState } from 'vuex'
 export default {
   name: 'home',
   data () {
     return {
-      city: '',
       iconList: [],
       swiperList: [],
       recommendList: [],
@@ -35,6 +35,18 @@ export default {
   },
   mounted () {
     axios.get('/api/index.json').then((res) => {
+      let data = res.data.data
+      this.iconList = data.iconList
+      this.swiperList = data.swiperList
+      this.recommendList = data.recommendList
+      this.weekendList = data.weekendList
+    })
+  },
+  computed: {
+    ...mapState(['city'])
+  },
+  activated () {
+    axios.get('/api/index.json?city=' + this.city).then((res) => {
       let data = res.data.data
       this.iconList = data.iconList
       this.swiperList = data.swiperList
