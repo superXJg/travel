@@ -3,7 +3,6 @@
       <div>
         <div class="area">
           <div class="title border-topbottom">当前城市</div>
-          <input type="hidden" v-model="currentIndex">
           <div class="button-list">
             <div class="button-wrapper">
               <div class="button">{{this.$store.state.city}}</div>
@@ -62,9 +61,19 @@ export default {
       let ele = this.$refs[letter][0]
       this.scroll.scrollToElement(ele, 300)
     },
-    currentIndex (value) {
-      console.log('watch')
-      this.$emit('index', value)
+    /* eslint-disable */
+    scrollY (val) {
+      console.log(val)
+      for (let i = 0; i < this.listHeight.length; i++) {
+        let h1 = this.listHeight[i]
+        let h2 = this.listHeight[i + 1]
+        if (!h2 || val >= h1 && val < h2) {
+          this.$emit('index', i)
+          return
+        }
+      }
+      // this.$emit('index', -1)
+      return
     }
   },
   methods: {
@@ -92,19 +101,7 @@ export default {
       console.log(this.listHeight)
     }
   },
-  computed: {
-    /* eslint-disable */
-    currentIndex () {
-      for (let i = 0; i < this.listHeight.length; i++) {
-        let h1 = this.listHeight[i]
-        let h2 = this.listHeight[i + 1]
-        if (!h2 || this.scrollY >= h1 && this.scrollY < h2) {
-          return i
-        }
-      }
-      return -1;
-    }
-  }
+  computed: {}
 }
 </script>
 

@@ -41,7 +41,7 @@ export default {
       this.letter = letter
     },
     getIndex (index) {
-      console.log('getIndex')
+      console.log(index)
       this.cIndex = index
     }
   }
