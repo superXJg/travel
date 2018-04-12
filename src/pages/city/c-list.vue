@@ -72,7 +72,7 @@ export default {
           return
         }
       }
-      // this.$emit('index', -1)
+      this.$emit('index', -1)
       return
     }
   },
