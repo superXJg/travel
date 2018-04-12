@@ -3,6 +3,7 @@
       <div>
         <div class="area">
           <div class="title border-topbottom">当前城市</div>
+          <input type="hidden" v-model="currentIndex">
           <div class="button-list">
             <div class="button-wrapper">
               <div class="button">{{this.$store.state.city}}</div>
@@ -38,9 +39,21 @@ export default {
     hotCities: Array,
     letter: String
   },
-  mounted () {
-    this.scroll = new BScroll(this.$refs.scroll, {
+  data () {
+    return {
+      scrollY: 0,
+      listHeight: []
+    }
+  },
+  created () {
+    this.$nextTick(() => {
+      this._initScroll()
     })
+  },
+  mounted () {
+    this._getHeight()
+  },
+  updated () {
   },
   components: {
   },
@@ -48,13 +61,48 @@ export default {
     letter (letter) {
       let ele = this.$refs[letter][0]
       this.scroll.scrollToElement(ele, 300)
+    },
+    currentIndex (value) {
+      console.log('watch')
+      this.$emit('index', value)
     }
   },
   methods: {
     handleCity (value) {
-      // this.$store.dispatch('changeCity', value)
       this.$store.commit('handleCity', value)
       this.$router.push('/')
+    },
+    _initScroll () {
+      this.scroll = new BScroll(this.$refs.scroll, {
+        probeType: 3,
+        click: true
+      })
+      this.scroll.on('scroll', (pos) => {
+        this.scrollY = Math.abs(Math.round(pos.y))
+      })
+    },
+    _getHeight () {
+      let lis = document.querySelectorAll('.area-option')
+      let height = lis[0].offsetTop
+      this.listHeight.push(height)
+      for (let i = 0; i < lis.length; i++) {
+        height += lis[i].clientHeight
+        this.listHeight.push(height)
+      }
+      console.log(this.listHeight)
+    }
+  },
+  computed: {
+    /* eslint-disable */
+    currentIndex () {
+      for (let i = 0; i < this.listHeight.length; i++) {
+        let h1 = this.listHeight[i]
+        let h2 = this.listHeight[i + 1]
+        if (!h2 || this.scrollY >= h1 && this.scrollY < h2) {
+          return i
+        }
+      }
+      return -1;
     }
   }
 }

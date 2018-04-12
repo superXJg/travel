@@ -1,8 +1,8 @@
 <template>
 <ul class="list">
-  <li class="item"
+  <li class="item needsclick" :class="{'active':cIndex === index}"
     @click="handle"
-    v-for="item of city"
+    v-for="(item, index) of city"
     :key="item" :ref='item'
     @touchstart="tstart"
     @touchmove="tmove"
@@ -15,7 +15,8 @@
 export default {
   name: 'alphabet',
   props: {
-    cities: Object
+    cities: Object,
+    cIndex: Number
   },
   data () {
     return {
@@ -83,6 +84,14 @@ export default {
   .item{
     line-height: .44rem;
     color: @bgColor;
+    &.active{
+      color: orangered;
+      text-shadow:0 0 4px white,
+        0 -2px 2px #ff3,
+        3px -3px 3px #fd3,
+        -3px -4px 4px #C90,
+        2px -5px 5px #f20;
+    }
   }
 }
 </style>
