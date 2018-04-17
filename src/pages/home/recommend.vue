@@ -2,7 +2,7 @@
     <div class="recommend">
       <div class="title border-bottom">推荐</div>
       <ul>
-        <li v-for="(item, index) in recommendList" :key="index" class="item border-bottom">
+        <router-link tag='li' v-for="(item, index) in recommendList" :key="index" class="item border-bottom" :to="'/detail/' + item.id">
           <div class="item-img">
             <img :src="item.imgUrl" alt="">
           </div>
@@ -12,7 +12,7 @@
               <div class="item-desc">{{item.desc}}</div>
             </div>
           </div>
-        </li>
+        </router-link>
       </ul>
     </div>
 </template>

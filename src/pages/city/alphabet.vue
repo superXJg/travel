@@ -55,7 +55,6 @@ export default {
           let starY = this.starY
           let touchY = e.touches[0].clientY
           let index = Math.floor((touchY - starY - 74)/22)
-          console.log(index)
           if (index >= 0 && index <= this.city.length) {
             this.$emit('change',this.city[index])
           }

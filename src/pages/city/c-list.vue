@@ -45,12 +45,14 @@ export default {
     }
   },
   created () {
-    this.$nextTick(() => {
-      this._initScroll()
-    })
   },
   mounted () {
-    this._getHeight()
+    this.$nextTick(() => {
+      this._initScroll()
+    }, 20)
+    setTimeout(() => {
+      this._getHeight()
+    }, 120)
   },
   updated () {
   },
@@ -68,6 +70,7 @@ export default {
         let h1 = this.listHeight[i]
         let h2 = this.listHeight[i + 1]
         if (!h2 || val >= h1 && val < h2) {
+          console.log(i)
           this.$emit('index', i)
           return
         }
