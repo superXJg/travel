@@ -9,16 +9,20 @@
         <div class='num'>32张</div>
       </div>
     </div>
-    <gallary @close="handleClose" v-show="isShow"></gallary>
+    <fade>
+      <gallary @close="handleClose" v-show="isShow"></gallary>
+    </fade>
   </div>
 </template>
 
 <script>
 import gallary from 'common/gallary/gallary'
+import fade from 'common/fade/fade'
 export default {
   name: 'detail-banner',
   components: {
-    gallary
+    gallary,
+    fade
   },
   data () {
     return {
