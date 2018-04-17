@@ -36,6 +36,9 @@ export default {
   },
   activated () {
     addEventListener('scroll', this.handler)
+  },
+  deactivated () {
+    removeEventListener('scroll', this.handler)
   }
 }
 </script>
