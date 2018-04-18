@@ -20,18 +20,6 @@ export default {
   },
   data () {
     return {
-      list: [
-          {
-            title: '门票一',
-            children: [{title: '内部门票'}]
-          },
-          {
-            title: '门票二'
-          },
-          {
-            title: '门票三'
-          }
-        ]
     }
   }
 }
