@@ -4,7 +4,7 @@
     @click="handle"
     v-for="(item, index) of city"
     :key="item" :ref='item'
-    @touchstart="tstart"
+    @touchstart.prevent="tstart"
     @touchmove="tmove"
     @touchend="tend"
   >{{item}}</li>
