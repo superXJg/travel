@@ -34,13 +34,13 @@ export default {
     weekend
   },
   mounted () {
-    axios.get('/api/index.json').then((res) => {
-      let data = res.data.data
-      this.iconList = data.iconList
-      this.swiperList = data.swiperList
-      this.recommendList = data.recommendList
-      this.weekendList = data.weekendList
-    })
+    // axios.get('/api/index.json').then((res) => {
+    //   let data = res.data.data
+    //   this.iconList = data.iconList
+    //   this.swiperList = data.swiperList
+    //   this.recommendList = data.recommendList
+    //   this.weekendList = data.weekendList
+    // })
   },
   computed: {
     ...mapState(['city'])

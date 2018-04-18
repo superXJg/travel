@@ -1,19 +1,35 @@
 <template>
     <div>
       <detail-head></detail-head>
-      <banner></banner>
+      <banner :sightName='sightName'></banner>
       <div class="content"></div>
     </div>
 </template>
 
 <script>
 import banner from '@/pages/detail/detail-banner'
+import axios from 'axios'
 import detailHead from '@/pages/detail/detail-head'
 export default {
   name: 'detail',
+  data () {
+    return {
+      sightName: '',
+      bannerImg: '',
+      gallaryImgs: [],
+      categoryList: []
+    }
+  },
   components: {
     banner,
     detailHead
+  },
+  activated () {
+    axios.get('/api/detail.json', {
+      params: {id: this.$route.params.id}
+    }).then((res) => {
+      this.sightName = res.data.sightName
+    })
   }
 }
 </script>
