@@ -1,8 +1,8 @@
 <template>
     <div>
       <detail-head></detail-head>
-      <banner :sightName='sightName'></banner>
-      <detailList :list="list"></detailList>
+      <banner :sightName='sightName' :bannerImg='bannerImg' :gallaryImgs='gallaryImgs'></banner>
+      <detailList :list="categoryList"></detailList>
       <div class="content"></div>
     </div>
 </template>
@@ -31,7 +31,10 @@ export default {
     axios.get('/api/detail.json', {
       params: {id: this.$route.params.id}
     }).then((res) => {
-      this.sightName = res.data.sightName
+      this.sightName = res.data.data.sightName
+      this.bannerImg = res.data.data.bannerImg
+      this.gallaryImgs = res.data.data.gallaryImgs
+      this.categoryList = res.data.data.categoryList
     })
   }
 }

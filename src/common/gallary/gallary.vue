@@ -1,8 +1,8 @@
 <template>
     <div class="gallary" @click="handleGallary">
-      <swiper :options="swiperOption" @click.stop >
-        <swiper-slide>
-          <img class="item-img" src="//img1.qunarzz.com/sight/p0/1711/fe/fe517fa5a183e4bca3.img.jpg_600x330_a413e5b1.jpg" alt="">
+      <swiper class="wrapper" :options="swiperOption" @click.stop >
+        <swiper-slide v-for="(item, index) in gallaryImgs" :key='index'>
+          <img class="item-img" :src="item" alt="">
         </swiper-slide>
         <div class="swiper-pagination"  slot="pagination"></div>
       </swiper>
@@ -12,6 +12,9 @@
 <script>
 /* eslint-disable */
   export default {
+  props: {
+    gallaryImgs: Array
+  },
   name: 'gallary',
   data () {
     return {
@@ -53,6 +56,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  .wrapper{
+    width: 100%;
+  }
   .item-img{
     width: 100%;
   }

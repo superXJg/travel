@@ -2,15 +2,15 @@
   <div>
     <div class='banner' @click="handleShow">
       <div class='banner-img'>
-        <img src="//img1.qunarzz.com/sight/p0/1506/f6/f6b727f036fe5d6d.water.jpg_600x330_ae0eb039.jpg" alt="">
+        <img :src="bannerImg" alt="">
       </div>
       <div class="banner-info">
-        <div class='title'>鼓浪屿(AAAAA景区)</div>
+        <div class='title'>{{sightName}}</div>
         <div class='num'>32张</div>
       </div>
     </div>
     <fade>
-      <gallary @close="handleClose" v-show="isShow"></gallary>
+      <gallary :gallaryImgs='gallaryImgs' @close="handleClose" v-show="isShow"></gallary>
     </fade>
   </div>
 </template>
@@ -20,6 +20,11 @@ import gallary from 'common/gallary/gallary'
 import fade from 'common/fade/fade'
 export default {
   name: 'detail-banner',
+  props: {
+    sightName: String,
+    bannerImg: String,
+    gallaryImgs: Array
+  },
   components: {
     gallary,
     fade
