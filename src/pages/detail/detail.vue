@@ -1,13 +1,15 @@
+
 <template>
     <div>
       <detail-head></detail-head>
       <banner :sightName='sightName' :bannerImg='bannerImg' :gallaryImgs='gallaryImgs'></banner>
-      <detailList :list="categoryList"></detailList>
+      <detailList v-for="(item, index) in categoryList" :title="item.title" :list="item.children" :key='index'></detailList>
       <div class="content"></div>
     </div>
 </template>
 
 <script>
+/* eslint-disable */
 import banner from '@/pages/detail/detail-banner'
 import axios from 'axios'
 import detailHead from '@/pages/detail/detail-head'
