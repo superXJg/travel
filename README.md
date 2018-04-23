@@ -2,6 +2,8 @@
 
 > A Vue.js project
 
+    对之前学习的代码进行改进,项目内容都有,css部分比较随意，然后没有使用字体图标。
+    
 ## Build Setup
 
 ``` bash
